@@ -1,0 +1,10 @@
+name: 'Wait'
+description: 'Wait a designated number of milliseconds'
+inputs:
+  config:  # id of input
+    description: 'json string: array of objects with cmd, labels, message, and close keys'
+    required: true
+    default: "[]"
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
