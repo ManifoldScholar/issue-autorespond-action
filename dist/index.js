@@ -55,26 +55,26 @@ module.exports = require("os");
 
 const core = __webpack_require__(470);
 const github = __webpack_require__(690);
-const wait = __webpack_require__(949);
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
+    core.warning('wtf done.')
     const config = JSON.parse(core.getInput("config"));
 
     if (!Array.isArray(config)) throw "Config must be an array"
 
     const issue = github.context.payload.issue;
-    if (!issue) return console.log("No issue. Exiting gracefully");
+    if (!issue) return core.warning("No issue. Exiting gracefully");
 
     const issueLabels = issue.labels.map((label) => label.name);
 
-    console.log("test ZD #1");
+    core.warning("test ZD #1");
 
     config.forEach((entry) => {
 
       const match = entry.require.every((label) => issueLabels.includes(label));
-      console.log(match, entry.require);
+      core.warning(match, entry.require);
 
     })
 
@@ -394,24 +394,6 @@ module.exports = require("path");
 /***/ (function() {
 
 eval("require")("@actions/github");
-
-
-/***/ }),
-
-/***/ 949:
-/***/ (function(module) {
-
-let wait = function(milliseconds) {
-  return new Promise((resolve, reject) => {
-    if (typeof(milliseconds) !== 'number') { 
-      throw new Error('milleseconds not a number'); 
-    }
-
-    setTimeout(() => resolve("done!"), milliseconds)
-  });
-}
-
-module.exports = wait;
 
 
 /***/ })
