@@ -495,8 +495,6 @@ const github = __webpack_require__(469);
 async function run() {
   try {
     const config = JSON.parse(core.getInput("config"));
-    console.log("FOO BAR FOO BAR");
-    console.log(config, 'config');
 
     if (!Array.isArray(config)) throw "Config must be an array"
 
@@ -504,14 +502,13 @@ async function run() {
     if (!issue) return core.warning("No issue. Exiting gracefully");
 
     const issueLabels = issue.labels.map((label) => label.name);
-
-    core.warning("test ZD #1");
+    console.log("Issue Labels: ", issueLabels);
 
     config.forEach((entry) => {
-
+      console.log("Found configuration:")
+      console.log(entry);
       const match = entry.require.every((label) => issueLabels.includes(label));
-      core.warning(match, entry.require);
-
+      console.log("Match?", match);
     })
 
   }
