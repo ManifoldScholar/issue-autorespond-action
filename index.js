@@ -14,6 +14,8 @@ async function run() {
 
     const issueLabels = issue.labels.map((label) => label.name);
 
+    console.log("test ZD #1");
+
     config.forEach((entry) => {
 
       const match = entry.require.every((label) => issueLabels.includes(label));
