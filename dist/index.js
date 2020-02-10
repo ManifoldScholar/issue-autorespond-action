@@ -494,7 +494,6 @@ const github = __webpack_require__(469);
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    core.warning('wtf done.')
     const config = JSON.parse(core.getInput("config"));
 
     if (!Array.isArray(config)) throw "Config must be an array"
