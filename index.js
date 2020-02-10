@@ -5,6 +5,8 @@ const github = require('@actions/github');
 async function run() {
   try {
     const config = JSON.parse(core.getInput("config"));
+    console.log("FOO BAR FOO BAR");
+    console.log(config, 'config');
 
     if (!Array.isArray(config)) throw "Config must be an array"
 
