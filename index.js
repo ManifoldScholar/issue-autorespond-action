@@ -72,6 +72,7 @@ async function run() {
 
     const labelLookup = {}
     result.repository.labels.edges.forEach((labelEdge) => {
+      console.log(labelEdge, 'labelEdge')
       labelLookup[labelEdge.node.name] = labelEdge.node.id;
     })
     console.log(`LabelLookup table is ${labelLookup}`);
