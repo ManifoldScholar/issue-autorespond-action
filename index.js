@@ -74,6 +74,7 @@ async function run() {
     result.repository.labels.edges.forEach((labelEdge) => {
       labelLookup[labelEdge.node.name] = labelEdge.node.id;
     })
+    console.log(`LabelLookup table is ${labelLookup}`);
 
     const commentEdges = result.repository.issue.comments.edges;
     commentEdges.forEach(async (edge) => {
