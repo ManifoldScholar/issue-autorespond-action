@@ -63,7 +63,6 @@ async function run() {
 
     console.log(`Checking authorization...`);
     const assignableUsers = result.repository.assignableUsers.edges.map(u => u.node.login)
-    console.log(`Authorized users are ${assignableUsers}`);
     console.log(`Comment author is ${commentAuthor}`);
     if (!assignableUsers.includes(commentAuthor)) {
       console.log(`The user ${commentAuthor} is not allowed to trigger this bot.`)
@@ -72,10 +71,8 @@ async function run() {
 
     const labelLookup = {}
     result.repository.labels.edges.forEach((labelEdge) => {
-      console.log(labelEdge, 'labelEdge')
       labelLookup[labelEdge.node.name] = labelEdge.node.id;
     })
-    console.log(`LabelLookup table is ${labelLookup}`);
 
     const commentEdges = result.repository.issue.comments.edges;
     commentEdges.forEach(async (edge) => {
